@@ -7,7 +7,6 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Iconos de Font Awesome -->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/sweetalert2@11.4.16/dist/sweetalert2.all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
@@ -190,40 +189,37 @@
         </section>
         <!-- Pie de página -->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Chess World 2021</div></footer>
-        <!-- Efectos JS -->
+        <!-- Efectos JS Bootstrap -->
         <script src="js/scripts.js"></script>
         <!-- JS donde se validan las respuestas correctas con alert. Los puntos se suman en la versión con usuario registrado-->
         <script> 
             function validarForm1() {
-                event.preventDefault();
                 pregunta1 = document.getElementById('pregunta1').value;
                 
                 if(pregunta1 == "A"){
-                    Swal.fire("Correcto! El caballo con un movimiento en L, ya que el peón solo captura moviendo una posición en diagonal y la torre en horizontal y vertical"); 
+                    alert("Correcto! El caballo con un movimiento en L, ya que el peón solo captura moviendo una posición en diagonal y la torre en horizontal y vertical"); 
                 }else{
-                    Swal.fire("Respuesta incorrecta"); 
+                    alert("Respuesta incorrecta"); 
                 }
             }
 
             function validarForm2() {
-                event.preventDefault();
                 pregunta2 = document.getElementById('pregunta2').value;
 
                 if(pregunta2 == "B"){
-                    Swal.fire("Correcto! El alfil con un movimiento en diagonal, ya que el rey solo mueve una posición en línea y el peón solo captura una posición en diagonal"); 
+                    alert("Correcto! El alfil con un movimiento en diagonal, ya que el rey solo mueve una posición en línea y el peón solo captura una posición en diagonal"); 
                 }else{
-                    Swal.fire("Respuesta incorrecta"); 
+                    alert("Respuesta incorrecta"); 
                 }
             }
 
             function validarForm3() {
-                event.preventDefault();
                 pregunta3 = document.getElementById('pregunta3').value;
 
                 if(pregunta3 == "C"){
-                    Swal.fire("Correcto! El movimiento no es posible, ya que el caballo mueve en L y la torre en la misma línea en horizontal o vertical"); 
+                    alert("Correcto! El movimiento no es posible, ya que el caballo mueve en L y la torre en la misma línea en horizontal o vertical"); 
                 }else{
-                    Swal.fire("Respuesta incorrecta"); 
+                    alert("Respuesta incorrecta"); 
                 }
             }
         </script>
