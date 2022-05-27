@@ -45,12 +45,12 @@
                 <h2 class="text-white mb-5">Selecciona un modo de aprendizaje</h2>
             </div>
 
-            <!-- Fila 1 de opciones -->
-            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <!-- Fila de opciones -->
+            <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
 
             <!-- Aprender movimientos -->
                 <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #FBD603;">
+                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #676a74;">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                             <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Movimientos</h2>
                         </div>
@@ -59,40 +59,27 @@
 
                 <!-- Aprender jugadas nv. 1 -->
                 <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #585b66">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Jugadas nvl. 1</h2>
+                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Aperturas</h2>
                         </div>
                     </div>
                 </div>
 
                 <!-- Aprender jugadas nv. 2 -->
                 <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #474b57">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Jugadas nvl. 2</h2>
+                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Jugadas</h2>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Fila 2 de opciones -->
-            <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
 
                 <!-- Jugar contra otro jugador -->
                 <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #ABBAEA">
+                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #3b404b">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                             <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Juega contra otro jugador</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Jugar contra la IA -->
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Juega contra la IA</h2>
                         </div>
                     </div>
                 </div>
