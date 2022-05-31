@@ -76,7 +76,7 @@
                     <div class="h-100 p-5 bg-light border rounded-3">
                     <h2>Aperturas y jugadas</h2>
                     <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
-                    <button class="btn btn-outline-secondary" type="button">¡Enseñame!</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="window.location=''">¡Enseñame!</button>
                     </div>
                 </div>
                 </div>
