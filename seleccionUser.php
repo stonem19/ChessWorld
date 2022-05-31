@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <!-- Aprender jugadas nv. 1 -->
+                <!-- Aprender Aperturas -->
                 <div class="col">
                     <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #585b66">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <!-- Aprender jugadas nv. 2 -->
+                <!-- Aprender Jugadas -->
                 <div class="col">
                     <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #474b57">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
