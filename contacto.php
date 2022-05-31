@@ -30,7 +30,7 @@
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
                         <h2 class="text-white mb-5">Nosotros te contactamos</h2>
-                        <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form class="form-signup" id="contactForm">
                             <!-- Introducir correo electrónico -->
                             <div class="row input-group-newsletter">
                                 <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Email..." aria-label="Email..." data-sb-validations="required,email" /></div>
@@ -61,7 +61,7 @@
                                 <i class="fas fa-envelope text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="#!">josemanuelcalvobaez@gmail.com</a></div>
+                                <div class="small text-black-50"><a href="#!">info@chessworld.com</a></div>
                             </div>
                         </div>
                     </div>
