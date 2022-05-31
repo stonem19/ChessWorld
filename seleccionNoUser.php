@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--Acceso a nuestro css-->
     <!-- Bootstrap -->
     <!-- CSS only -->
@@ -23,16 +24,20 @@
         }
     </style>
 </head>
-
 <body>
+    <?php
+        error_reporting(0);
+        // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
+        session_start();
+        $nombre = $_POST['nombre'];
+        $_SESSION['nombre']= $nombre;
+        $clase = $_POST['clase'];
+        $_SESSION['clase']= $clase;
+    ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.php">Inicio</a>
-            <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button> -->
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
@@ -49,67 +54,35 @@
                 <h2 class="text-white mb-5">Selecciona un modo de aprendizaje</h2>
             </div>
 
-            <!-- Fila 1 de opciones -->
-            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-
-            <!-- Aprender movimientos -->
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #FBD603;">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Movimientos</h2>
-                        </div>
-                    </div>
+            <!-- Fila de opciones -->
+            <div class="container py-4">
+                <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">Juega contra otro jugador</h1>
+                    <p class="col-md-8 fs-4">Podrás jugar en 3D contra otro jugador de forma local. </p>
+                    <button class="btn btn-primary btn-lg" onclick="window.location='game/index.html'" type="button">¡A jugar!</button> 
+                </div>
                 </div>
 
-                <!-- Aprender jugadas nv. 1 -->
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Jugadas nvl. 1</h2>
-                        </div>
+                <div class="row align-items-md-stretch">
+                <div class="col-md-6">
+                    <div class="h-100 p-5 text-white bg-dark rounded-3">
+                    <h2>Movimientos</h2>
+                    <p>Parece algo sencillo, pero siempre está bien recordar como se mueven las piezas de ajedrez. ¡En una partida no podrás dudar!</p>
+                    <button class="btn btn-outline-light" type="button" onclick="window.location='movimientos.php'">¡Realiza el test!</button>
                     </div>
                 </div>
-
-                <!-- Aprender jugadas nv. 2 -->
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Jugadas nvl. 2</h2>
-                        </div>
+                <div class="col-md-6">
+                    <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Aperturas y jugadas</h2>
+                    <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
+                    <button class="btn btn-outline-secondary" type="button">¡Enseñame!</button>
                     </div>
+                </div>
                 </div>
             </div>
 
-            <!-- Fila 2 de opciones -->
             <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
-
-                <!-- Jugar contra otro jugador -->
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg" style="background-color: #ABBAEA">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Juega contra otro jugador</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Jugar contra la IA -->
-                <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-8 lh-1 fw-bold">Juega contra la IA</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-                        </div>
-                    </div>
-                </div> -->
-
-            </div>
     </section>
     <!-- Pie de página -->
     <footer class="footer bg-black small text-center text-white-50">

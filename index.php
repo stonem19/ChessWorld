@@ -72,11 +72,9 @@
                 if ($fila1['nombre'] == $usuario && $fila2['pass'] == $password2){
                     echo "Usuario correcto";
                     if($fila2['pass'] == "123456"){
-                        header("Location: usergame.php");
+                        header("Location: seleccionUser.php");
                     }elseif($fila2['pass'] == "789101"){
                         header("Location: adminweb.php");
-                    }elseif($fila1['nombre'] == $usuario && $fila2['pass'] == $password2){
-                        header("Location: usergame.php");
                     }else{
                         echo "Algo ha ido a mal";
                     }
@@ -143,7 +141,7 @@
                                 <section class="modal-content">
                                     <p><strong>Datos básicos</strong></p>
                                     <!-- Formulario principal donde recopilamos datos -->
-                                    <form action="juego.php" method="post" name="validar">
+                                    <form action="seleccionNoUser.php" method="post" name="validar">
                                         <p>Introduce tu nombre</p>
                                         <input type="text" id="nombre" name="nombre" required/>
                                         </select>
