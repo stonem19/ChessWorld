@@ -26,7 +26,7 @@
 
     <body>
         <?php
-            //error_reporting(0);
+            error_reporting(0);
             // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
             session_start();
             $usuario = $_POST['usuario'];
