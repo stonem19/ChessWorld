@@ -29,7 +29,7 @@ id VARCHAR (6),
 mensaje TEXT (500));
 
 INSERT INTO usuarios (nombre, pass, puntos, aciertos, fallos, permisos, id) values ("User","123456","50","0","0","CCC", "A1B2C3");
-INSERT INTO usuarios (nombre, pass, puntos, aciertos, fallos, permisos, id) values ("User","789101","0","0","0", "CCC", "D2E3F4");
+INSERT INTO usuarios (nombre, pass, puntos, aciertos, fallos, permisos, id) values ("User","789101","0","0","0", "AAA", "D2E3F4");
 
 INSERT INTO permisos (tipo, codigo) values ("Administrador", "AAA");
 INSERT INTO permisos (tipo, codigo) values ("Empleado", "BBB");
