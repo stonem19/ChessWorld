@@ -118,9 +118,7 @@
                         <h1 class="mx-auto my-0 text-uppercase">Chess World</h1><!-- Bienvenido a Chess World -->
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Aprende a jugar al ajedrez</h2>
                         <div class="btn-group">
-                            <button type="button" class="open-modal btn btn-primary" data-open="modal1">
-                                Jugar como invitado
-                            </button>
+                            <button type="button" class="btn btn-primary" onclick="window.location='seleccionNoUser.php'">Jugar como invitado</button>
                             <p>&nbsp;</p>
                             <button type="button" class="open-modal btn btn-primary" data-open="modal2">
                                 Jugar como usuario
@@ -130,7 +128,7 @@
                                 Registro
                             </button>
                         </div>
-                        <!--ACCIONES DEL MODAL 1-->
+                        <!--ACCIONES DEL MODAL 1  [DESHABILITADO]-->
                         <div class="modal" id="modal1" data-animation="slideInOutLeft">
                             <div class="modal-dialog">
                                 <header class="modal-header">

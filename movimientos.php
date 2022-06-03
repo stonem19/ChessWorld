@@ -16,6 +16,14 @@
             #mainNav{
                 background-color:black;
             }
+
+            #mainNav .navbar-brand {
+            color: #FFF;
+            font-weight: 700;
+            padding: 0.9rem 0;
+            }
+
+            
         </style>
     </head>
 
