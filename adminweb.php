@@ -15,21 +15,16 @@
             #mainNav{
                 background-color:black;
             }
-            #title{
-                display: flex;
-                justify-content: center;
-            }
-            #bbdd{
-                display: flex;
-                justify-content: center;
-            }
         </style>
     </head>
 
     <body>
         <?php
-            error_reporting(0);
+            //error_reporting(0);
             // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
+            //session_start();
+            //$usuario = $_POST['usuario'];
+            //$_SESSION['usuario']= $usuario;
 
             /* BBDD */
             // Variables
@@ -60,15 +55,16 @@
 
                     $conn = mysqli_connect($servername, $username, $password, $database);
 
-                    $query = "SELECT nombre, pass, puntos from usuarios";
+                    $query = "SELECT nombre, permisos, id from usuarios";
 
                     $result = mysqli_query($conn,$query);
 
                     $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
+                    <h3>Usuarios</h3>
                     <tr>
-                    <td><font face="verdana"><b>Nombre</b></font></td>
-                    <td><font face="verdana"><b>Contraseña</b></font></td>
-                    <td><font face="verdana"><b>Puntos</b></font></td>
+                    <td><font face="verdana"><b>NOMBRE</b></font></td>
+                    <td><font face="verdana"><b>PERMISOS</b></font></td>
+                    <td><font face="verdana"><b>ID</b></font></td>
                     </tr>';
 
                     echo ($tabla);
@@ -78,12 +74,82 @@
                         echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
                         $row["nombre"] . "</font></td>";
                         echo "<td width=\"25%\"><font face=\"verdana\">" .
-                        $row["pass"] . "</font></td>";
+                        $row["permisos"] . "</font></td>";
                         echo "<td width=\"25%\"><font face=\"verdana\">" .
-                        $row["puntos"] . "</font></td>";
+                        $row["id"] . "</font></td>";
                     }
-            }                 
-            mysqli_close($conn);
+            }
+            
+            function permisos(){
+                //Make var
+                $servername = "localhost";
+                $database = "bbdd";
+                $username = "root";
+                $password = "";
+
+                // Create connection
+
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                $query = "SELECT tipo, codigo from permisos";
+
+                $result = mysqli_query($conn,$query);
+
+                $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
+                <h3>Permisos</h3>
+                <tr>
+                <td><font face="verdana"><b>TIPO</b></font></td>
+                <td><font face="verdana"><b>CODE</b></font></td>
+                </tr>';
+
+                echo ($tabla);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["tipo"] . "</font></td>";
+                    echo "<td width=\"25%\"><font face=\"verdana\">" .
+                    $row["codigo"] . "</font></td>";
+                }
+            }  
+            
+            function actividadUsers(){
+                //Make var
+                $servername = "localhost";
+                $database = "bbdd";
+                $username = "root";
+                $password = "";
+
+                // Create connection
+
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                $query = "SELECT registro, id, permisos from acountuser";
+
+                $result = mysqli_query($conn,$query);
+
+                $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
+                <h3>Actividad de usuarios registrados</h3>
+                <tr>
+                <td><font face="verdana"><b>FECHA</b></font></td>
+                <td><font face="verdana"><b>ID</b></font></td>
+                <td><font face="verdana"><b>CODE</b></font></td>
+                </tr>';
+
+                echo ($tabla);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["registro"] . "</font></td>";
+                    echo "<td width=\"25%\"><font face=\"verdana\">" .
+                    $row["id"] . "</font></td>";
+                    echo "<td width=\"25%\"><font face=\"verdana\">" .
+                    $row["permisos"] . "</font></td>";
+                }
+            }  
+
+        mysqli_close($conn);
 
         ?>
         <!-- Barra de navegación -->
@@ -117,12 +183,13 @@
                     </div>
             </div>
         </section>
-        <div id="title">
-            <h2>Lectura de datos</h2>
-            &nbsp;
-        </div>
-        <div id="bbdd">
-                <h3><?php lectura(); ?></h3>
+
+        <div class="container">
+            <div class="row">
+                <div class="col"><?php lectura(); ?></div>
+                <div class="col"><?php permisos(); ?></div>
+                <div class="col"><?php actividadUsers(); ?></div>
+            </div>
         </div>
 
         <!-- Efectos JS Bootstrap -->

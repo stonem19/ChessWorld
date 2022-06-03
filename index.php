@@ -17,7 +17,7 @@
 
     <body>
         <?php
-            error_reporting(0);
+            //error_reporting(0);
             /* Sesión para enviar datos básicos a juego.php (juego sin registro) */
             session_start();
             if (!isset($_SESSION['temps'])){
@@ -63,6 +63,17 @@
                 /* Consulta password */ 
                 $pass="SELECT pass from usuarios WHERE pass ='".$password2."'";  
                 $passok=mysqli_query($conn,$pass) or die ('Error en el query database');
+
+                /* Obtener fecha */
+                $fecha="SELECT now();";
+
+                $sql1 = "INSERT INTO acountuser VALUES('".$fecha."')";
+
+                if (mysqli_query($conn,$sql1) === TRUE) {
+                    echo "<br>Nueva entrada en la base de datos<br>";
+                } else {
+                   echo "Error: " . $sql1 . "<br>" . $conn->error;
+                }
                 
                 //Valida que la consulta esté bien hecha
                 $fila1 = mysqli_fetch_array( $userok );
