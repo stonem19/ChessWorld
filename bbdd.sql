@@ -35,3 +35,7 @@ INSERT INTO permisos (tipo, codigo) values ("Administrador", "AAA");
 INSERT INTO permisos (tipo, codigo) values ("Empleado", "BBB");
 INSERT INTO permisos (tipo, codigo) values ("Usuario", "CCC");
 
+SELECT tipo, codigo from permisos;
+
+select now();
+
