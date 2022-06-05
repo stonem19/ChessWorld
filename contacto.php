@@ -17,6 +17,36 @@
     </head>
 
     <body>
+    <?php
+        error_reporting(0);
+
+        //Variables contacto
+        $nombre = $_POST['nombre'];
+        $correo = $_POST['correo'];
+        $mensaje = $_POST['mensaje'];
+            
+        /* Conexión BBDD */
+        $servername = "localhost";
+        $database = "bbdd";
+        $username = "root";
+        $password = "";
+                        
+        // Conexión BBDD
+        $conn = mysqli_connect($servername, $username, $password, $database);
+
+        /* Realizar registro */
+        if (isset($_POST["nombre"])) {
+                            
+                $sql = "INSERT INTO contacto (nombre, correo, mensaje) VALUES('".$nombre."', '".$correo."', '".$mensaje."')";
+
+                if (mysqli_query($conn,$sql) === TRUE) {
+                     echo "<br>Mensaje enviado<br>"; 
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+                mysqli_close($conn);
+            }
+        ?>
         <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -30,22 +60,15 @@
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
                         <h2 class="text-white mb-5">Nosotros te contactamos</h2>
-                        <form class="form-signup" id="contactForm">
-                            <!-- Introducir correo electrónico -->
-                            <div class="row input-group-newsletter">
-                                <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Email..." aria-label="Email..." data-sb-validations="required,email" /></div>
-                                <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Conecta</button></div>
-                            </div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">Email obligatorio</div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email no válido</div>
-                            <!-- Mensaje una vez introducido el email-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3 mt-2 text-white">
-                                    <div class="fw-bolder">Dirección enviada correctamente</div>
-                                </div>
-                            </div>
-                            <!-- Posible mensaje de error-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error al enviar los datos</div></div>
+                        <form method="post" class="form-signup" name="contactForm" id="contactForm">
+                            <p>Introduce tu nombre</p>
+                            <input type="text" id="nombre" name="nombre" required/>
+                            <p>Introduce correo de contacto</p>
+                            <input type="email" id="correo" name="correo" required/>
+                            <p>Mensaje</p>
+                            <input type="text" id="mensaje" name="mensaje" required/>
+                            <p>&nbsp;</p>
+                            <input type="submit" value="enviar">
                         </form>
                     </div>
                 </div>
