@@ -1,11 +1,11 @@
 CREATE TABLE usuarios (
 nombre VARCHAR (25),
 pass VARCHAR (6),
-puntos BIGINT (5),
+dni VARCHAR (9),
 aciertos BIGINT (5),
 fallos BIGINT (5),
 permisos VARCHAR (3),
-id VARCHAR (6));
+id VARCHAR (36));
 
 CREATE TABLE contacto (
 nombre VARCHAR (25),
@@ -21,15 +21,14 @@ registro DATETIME (6));
 
 CREATE TABLE acountuser (
 registro DATETIME (6),
-id VARCHAR (6),
-permisos VARCHAR (3));
+usuario VARCHAR (6));
 
 CREATE TABLE incidencias (
 id VARCHAR (6),
 mensaje TEXT (500));
 
-INSERT INTO usuarios (nombre, pass, puntos, aciertos, fallos, permisos, id) values ("User","123456","50","0","0","CCC", "A1B2C3");
-INSERT INTO usuarios (nombre, pass, puntos, aciertos, fallos, permisos, id) values ("User","789101","0","0","0", "AAA", "D2E3F4");
+INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) values ("User","123456","14512684H","0","0","CCC", uuid());
+INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) values ("User","789101","54848741K","0","0", "AAA", uuid());
 
 INSERT INTO permisos (tipo, codigo) values ("Administrador", "AAA");
 INSERT INTO permisos (tipo, codigo) values ("Empleado", "BBB");
@@ -37,5 +36,14 @@ INSERT INTO permisos (tipo, codigo) values ("Usuario", "CCC");
 
 SELECT tipo, codigo from permisos;
 
+select id from usuarios where dni = "14512684H";
+
 select now();
 
+INSERT INTO acountuser (registro) VALUES(NOW());
+
+SELECT LEFT(UUID(), 6);
+
+select uuid() as uid;
+
+INSERT INTO freeuser (registro) VALUES(NOW())
