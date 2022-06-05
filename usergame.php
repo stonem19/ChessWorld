@@ -7,6 +7,7 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Iconos de Font Awesome -->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert2@11.4.16/dist/sweetalert2.all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
@@ -26,11 +27,14 @@
 
     <body>
         <?php
-            error_reporting(0);
+            //error_reporting(0);
             // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
             session_start();
             $usuario = $_POST['usuario'];
             $_SESSION['usuario']= $usuario;
+
+            $usuarioreg = $_POST['usuarioreg'];
+            $_SESSION['usuarioreg']= $usuario;
 
             /* BBDD */
             // Variables
@@ -44,14 +48,14 @@
 
             /* Consulta puntos y nombre desde la base de datos */ 
             //$puntos="SELECT puntos from usuarios WHERE nombre ='".$usuario."'"; 
-            //$puntos="SELECT puntos from usuarios WHERE nombre ='".$_SESSION['usuario']."'";
-            //$puntos="SELECT puntos from usuarios WHERE nombre ='$usuario'";
-            $puntos="SELECT puntos from usuarios WHERE nombre ='User'";   
+            //$puntos="SELECT aciertos from usuarios WHERE nombre ='".$_SESSION['usuario']."'";
+            $puntos="SELECT aciertos from usuarios WHERE nombre ='$usuario'";
+            //$puntos="SELECT aciertos from usuarios WHERE nombre = 'Ana'";   
             $puntosok=mysqli_query($conn,$puntos) or die ('Error en el query database');
 
             //$nombre="SELECT puntos from usuarios WHERE nombre ='".$_SESSION['usuario']."'";
             //$nombre="SELECT nombre from usuarios WHERE nombre ='".$usuario."'";  
-            $nombre="SELECT nombre from usuarios WHERE nombre ='User'";
+            $nombre="SELECT nombre from usuarios WHERE id ='a3dbf9e9-e4cc-11ec-a629-309c23ffd12e'";
             $nombreok=mysqli_query($conn,$nombre) or die ('Error en el query database');
                             
             //Valida que la consulta esté bien hecha
@@ -61,7 +65,7 @@
             mysqli_close($conn);
 
             //Se llama a esta función desde el código JS al final de usergame.php cuando se valida que la respuesta es correcta
-            function escritura(){
+            function escritura($usuario){
 
                 //Make var
                 $servername = "localhost";
@@ -73,7 +77,7 @@
                 $conn = mysqli_connect($servername, $username, $password, $database);
 
                 /* Insert en la base de datos para sumar puntos si se acierta*/
-                $sql = "UPDATE usuarios set puntos=puntos+5 where pass='123456'";
+                $sql = "UPDATE usuarios set aciertos=aciertos+1 where nombre='".$usuario."'";
                 /* AVISO - Hay que tener habilitado en la base de datos que acepte UPDATE sin restrinciones */
                 /* Se puede configurar en PREFERENCES > SQL Editor y desmarcar la casilla Safe Updates */
 
@@ -87,7 +91,7 @@
         }
 
         ?>
-        <!-- Barra de navegación -->
+        <!-- Barra de navegación 
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="index.php">Inicio</a>
@@ -98,7 +102,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
         <!-- Juego utilizando formularios -->
         <section class="projects-section bg-light" id="projects">
             <div class="container px-4 px-lg-5">
@@ -110,7 +114,7 @@
                                 <div class="d-flex h-100">
                                     <div class="project-text w-100 my-auto text-center text-lg-left">
                                         <h4 class="text-white">Usuario <?php echo $fila4["nombre"];?></h4>
-                                        <p class="mb-0 text-white-50">Puntos <?php echo $fila3["puntos"]; ?></p>
+                                        <p class="mb-0 text-white-50">Aciertos <?php echo $fila3["aciertos"]; ?></p>
                                         <hr class="d-none d-lg-block mb-0 ms-0" />
                                     </div>
                                 </div>
@@ -250,38 +254,38 @@
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Chess World 2021</div></footer>
         <!-- Efectos JS Bootstrap -->
         <script src="js/scripts.js"></script>
-        <!-- JS Validación de las preguntas, SOLO SE EJECUTA EL LA LÍNEA PHP sin los alerts, la validacioón la hace JS-->
+        <!-- JS Validación de las preguntas -->
         <script> 
             function validarForm1() {
+                event.preventDefault();
                 pregunta1 = document.getElementById('pregunta1').value;
                 
                 if(pregunta1 == "A"){
-                    alert("Correcto! El caballo con un movimiento en L, ya que el peón solo captura moviendo una posición en diagonal y la torre en horizontal y vertical"); 
-                    <?php escritura(); ?>
-                }else {
-                    alert("Respuesta incorrecta"); 
+                    Swal.fire("Correcto! El caballo con un movimiento en L, ya que el peón solo captura moviendo una posición en diagonal y la torre en horizontal y vertical"); 
+                }else{
+                    Swal.fire("Respuesta incorrecta"); 
                 }
             }
 
             function validarForm2() {
+                event.preventDefault();
                 pregunta2 = document.getElementById('pregunta2').value;
 
                 if(pregunta2 == "B"){
-                    alert("Correcto! El alfil con un movimiento en diagonal, ya que el rey solo mueve una posición en línea y el peón solo captura una posición en diagonal"); 
-                    <?php escritura(); ?>
+                    Swal.fire("Correcto! El alfil con un movimiento en diagonal, ya que el rey solo mueve una posición en línea y el peón solo captura una posición en diagonal"); 
                 }else{
-                    alert("Respuesta incorrecta"); 
+                    Swal.fire("Respuesta incorrecta"); 
                 }
             }
 
             function validarForm3() {
+                event.preventDefault();
                 pregunta3 = document.getElementById('pregunta3').value;
 
                 if(pregunta3 == "C"){
-                    alert("Correcto! El movimiento no es posible, ya que el caballo mueve en L y la torre en la misma línea en horizontal o vertical"); 
-                    <?php escritura(); ?>
+                    Swal.fire("Correcto! El movimiento no es posible, ya que el caballo mueve en L y la torre en la misma línea en horizontal o vertical"); 
                 }else{
-                    alert("Respuesta incorrecta"); 
+                    Swal.fire("Respuesta incorrecta"); 
                 }
             }
         </script>

@@ -199,7 +199,7 @@
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Chess World 2021</div></footer>
         <!-- Efectos JS -->
         <script src="js/scripts.js"></script>
-        <!-- JS donde se validan las respuestas correctas con alert. Los puntos se suman en la versión con usuario registrado-->
+        <!-- JS donde se validan las respuestas correctas con sweet-alert. Los puntos se suman en la versión con usuario registrado-->
         <script> 
             function validarForm1() {
                 event.preventDefault();
