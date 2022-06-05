@@ -124,7 +124,7 @@
 
                 $conn = mysqli_connect($servername, $username, $password, $database);
 
-                $query = "SELECT registro, id, permisos from acountuser";
+                $query = "SELECT registro, usuario from acountuser";
 
                 $result = mysqli_query($conn,$query);
 
@@ -132,8 +132,7 @@
                 <h3>Actividad de usuarios registrados</h3>
                 <tr>
                 <td><font face="verdana"><b>FECHA</b></font></td>
-                <td><font face="verdana"><b>ID</b></font></td>
-                <td><font face="verdana"><b>CODE</b></font></td>
+                <td><font face="verdana"><b>USUARIO</b></font></td>
                 </tr>';
 
                 echo ($tabla);
@@ -143,9 +142,7 @@
                     echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
                     $row["registro"] . "</font></td>";
                     echo "<td width=\"25%\"><font face=\"verdana\">" .
-                    $row["id"] . "</font></td>";
-                    echo "<td width=\"25%\"><font face=\"verdana\">" .
-                    $row["permisos"] . "</font></td>";
+                    $row["usuario"] . "</font></td>";
                 }
             }  
 
@@ -187,8 +184,8 @@
         <div class="container">
             <div class="row">
                 <div class="col"><?php lectura(); ?></div>
-                <div class="col"><?php permisos(); ?></div>
                 <div class="col"><?php actividadUsers(); ?></div>
+                <div class="col"><?php permisos(); ?></div>
             </div>
         </div>
 
