@@ -15,6 +15,10 @@
             #mainNav{
                 background-color:black;
             }
+
+            #datos{
+                margin-bottom: 240px;
+            }
         </style>
     </head>
 
@@ -146,6 +150,104 @@
                 }
             }  
 
+            function actividadNoUsers(){
+                //Make var
+                $servername = "localhost";
+                $database = "bbdd";
+                $username = "root";
+                $password = "";
+
+                // Create connection
+
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                $query = "SELECT registro, usuario from acountuser";
+
+                $result = mysqli_query($conn,$query);
+
+                $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
+                <h3>Actividad de usuarios no registrados</h3>
+                <tr>
+                <td><font face="verdana"><b>FECHA</b></font></td>
+                </tr>';
+
+                echo ($tabla);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["registro"] . "</font></td>";
+                }
+            }  
+
+            function incidencias(){
+                //Make var
+                $servername = "localhost";
+                $database = "bbdd";
+                $username = "root";
+                $password = "";
+
+                // Create connection
+
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                $query = "SELECT nombre, correo, mensaje from incidencias";
+
+                $result = mysqli_query($conn,$query);
+
+                $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
+                <h3>Incidencias</h3>
+                <tr>
+                <td><font face="verdana"><b>Pendientes de resolución</b></font></td>
+                </tr>';
+
+                echo ($tabla);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["nombre"] . "</font></td>";
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["correo"] . "</font></td>";
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["mensaje"] . "</font></td>";
+                }
+            }
+
+            function contacto(){
+                //Make var
+                $servername = "localhost";
+                $database = "bbdd";
+                $username = "root";
+                $password = "";
+
+                // Create connection
+
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                $query = "SELECT nombre, correo, mensaje from contacto";
+
+                $result = mysqli_query($conn,$query);
+
+                $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
+                <h3>Contacto</h3>
+                <tr>
+                <td><font face="verdana"><b>Mensajes por responder</b></font></td>
+                </tr>';
+
+                echo ($tabla);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["nombre"] . "</font></td>";
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["correo"] . "</font></td>";
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["mensaje"] . "</font></td>";
+                }
+            }
+
         mysqli_close($conn);
 
         ?>
@@ -171,8 +273,6 @@
                                     <div class="d-flex h-100">
                                         <div class="project-text w-100 my-auto text-center text-lg-left">
                                             <h4 class="text-white">Administrador</h4>
-                                            <h3 class="mb-0 text-white-50"><?php echo $fila4["nombre"]; ?></h3>
-                                            <hr class="d-none d-lg-block mb-0 ms-0" />
                                         </div>
                                     </div>
                                 </div>
@@ -181,11 +281,14 @@
             </div>
         </section>
 
-        <div class="container">
+        <div class="container" id="datos">
             <div class="row">
                 <div class="col"><?php lectura(); ?></div>
-                <div class="col"><?php actividadUsers(); ?></div>
                 <div class="col"><?php permisos(); ?></div>
+                <div class="col"><?php actividadUsers(); ?></div>
+                <div class="col"><?php actividadNoUsers(); ?></div>
+                <div class="col"><?php incidencias(); ?></div>
+                <div class="col"><?php contacto(); ?></div>
             </div>
         </div>
 
