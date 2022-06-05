@@ -17,7 +17,7 @@
 
     <body>
         <?php
-            //error_reporting(0);
+            error_reporting(0);
             /* Sesión para enviar datos básicos a juego.php (juego sin registro) */
             session_start();
             if (!isset($_SESSION['temps'])){
@@ -27,10 +27,10 @@
             }
 
             //Variables jugar sin registro
-            $nombre = $_POST['nombre'];
-            $_SESSION['nombre']= $nombre;
-            $clase = $_POST['clase'];
-            $_SESSION['clase']= $clase;
+            //$nombre = $_POST['nombre'];
+            //$_SESSION['nombre']= $nombre;
+            //$clase = $_POST['clase'];
+            //$_SESSION['clase']= $clase;
 
             //Variables inicio de sesión
             $usuario = $_POST['usuario'];
@@ -40,7 +40,10 @@
             //Variables registro
             $usuarioreg = $_POST['usuarioreg'];
             $passw = $_POST['passw'];
-            $points = 0;
+            $dni = $_POST['dni'];
+            $aciertos = 0;
+            $fallos = 0;
+            $permisos = "CCC";
             
             /* Conexión BBDD para usuarios registrados */
             // Variables
@@ -64,13 +67,11 @@
                 $pass="SELECT pass from usuarios WHERE pass ='".$password2."'";  
                 $passok=mysqli_query($conn,$pass) or die ('Error en el query database');
 
-                /* Obtener fecha */
-                $fecha="SELECT now();";
-
-                $sql1 = "INSERT INTO acountuser VALUES('".$fecha."')";
+                /* Registrar actividad usuarios */
+                $sql1 = "INSERT INTO acountuser (registro, usuario) VALUES(NOW(), '".$usuario."')";
 
                 if (mysqli_query($conn,$sql1) === TRUE) {
-                    echo "<br>Nueva entrada en la base de datos<br>";
+                    echo "<br>Registrado movimiento en la base de datos<br>";
                 } else {
                    echo "Error: " . $sql1 . "<br>" . $conn->error;
                 }
@@ -99,10 +100,10 @@
             /* Realizar registro */
             if (isset($_POST["usuarioreg"])) {
                             
-                $sql = "INSERT INTO usuarios VALUES('".$usuarioreg."', '".$passw."', '".$points."')";
-                    
+                $sql = "INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) VALUES('".$usuarioreg."', '".$passw."', '".$dni."', '".$aciertos."', '".$fallos."', '".$permisos."', uuid())";
+
                 if (mysqli_query($conn,$sql) === TRUE) {
-                     echo "<br>Nueva entrada en la base de datos<br>";
+                     echo "<br>Nueva entrada en la base de datos<br>"; 
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -139,17 +140,17 @@
                                 Registro
                             </button>
                         </div>
-                        <!--ACCIONES DEL MODAL 1  [DESHABILITADO]-->
+                        <!--ACCIONES DEL MODAL 1  [DESHABILITADO]
                         <div class="modal" id="modal1" data-animation="slideInOutLeft">
                             <div class="modal-dialog">
-                                <header class="modal-header">
-                                    <!--Jugar como Invitado-->
+                                <header class="modal-header">-->
+                                    <!--Jugar como Invitado
                                     &nbsp;
                                     <div data-close></div>
                                 </header>
                                 <section class="modal-content">
-                                    <p><strong>Datos básicos</strong></p>
-                                    <!-- Formulario principal donde recopilamos datos -->
+                                    <p><strong>Datos básicos</strong></p>-->
+                                    <!-- Formulario principal donde recopilamos datos
                                     <form action="seleccionNoUser.php" method="post" name="validar">
                                         <p>Introduce tu nombre</p>
                                         <input type="text" id="nombre" name="nombre" required/>
@@ -159,7 +160,7 @@
                                     </form>
                                 </section>
                             </div>
-                        </div>
+                        </div>-->
                         <!--ACCIONES DEL MODAL 2-->
                         <div class="modal" id="modal2">
                             <div class="modal-dialog">
@@ -192,9 +193,11 @@
                                 <section class="modal-content">
                                     <p><strong>Registro de Usuario</strong></p>
                                     <form method="post" name="registro">
-                                        <p>Introduce usuario</p>
+                                        <p>Introduce Nombre de Usuario</p>
                                         <input type="text" id="usuarioreg" name="usuarioreg" required/>
-                                        <p>Introduce contraseña</p>
+                                        <p>Introduce Dni</p>
+                                        <input type="text" id="dni" name="dni" required/>
+                                        <p>Introduce Contraseña</p>
                                         <input type="password" id="passw" name="passw" required/>
                                         <p>&nbsp;</p>
                                         <input type="submit" value="Registrarse">
