@@ -24,7 +24,8 @@ registro DATETIME (6),
 usuario VARCHAR (6));
 
 CREATE TABLE incidencias (
-id VARCHAR (6),
+nombre VARCHAR (25),
+correo VARCHAR (50),
 mensaje TEXT (500));
 
 INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) values ("User","123456","14512684H","0","0","CCC", uuid());
@@ -46,4 +47,8 @@ SELECT LEFT(UUID(), 6);
 
 select uuid() as uid;
 
-INSERT INTO freeuser (registro) VALUES(NOW())
+INSERT INTO freeuser (registro) VALUES(NOW());
+
+Insert into contacto (nombre, correo, mensaje) VALUES ("Pedro", "pedrochess@aol.es", "Me gustaría ahcer una colaboración publicitaria con vosotros. Nuestra web ofrece productos enfocados a jugadores de ajerez. Un saludo");
+
+insert into incidencias (nombre, correo, mensaje) values ("Jose", "josealfil@hotmail.com", "El formulario 2 del test, no registra cuando fallo. No es grave, pero me gustaría que funcionara. Gracias");
