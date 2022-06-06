@@ -31,12 +31,8 @@
 <body>
     <?php
     error_reporting(0);
-    // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
+    // Retomamos la sesión
     session_start();
-    $nombre = $_POST['nombre'];
-    $_SESSION['nombre'] = $nombre;
-    $clase = $_POST['clase'];
-    $_SESSION['clase'] = $clase;
 
     //Variables contacto
     $nombre = $_POST['nombre'];
