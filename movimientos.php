@@ -42,28 +42,28 @@
     $nombre = $_POST['nombre'];
     $correo = $_POST['correo'];
     $mensaje = $_POST['mensaje'];
-        
+
     /* Conexión BBDD */
     $servername = "localhost";
     $database = "bbdd";
     $username = "root";
     $password = "";
-                    
+
     // Conexión BBDD
     $conn = mysqli_connect($servername, $username, $password, $database);
 
     /* Realizar registro incidencias*/
     if (isset($_POST["nombre"])) {
-                        
-            $sql = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('".$nombre."', '".$correo."', '".$mensaje."')";
 
-            if (mysqli_query($conn,$sql) === TRUE) {
-                echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-            mysqli_close($conn);
+        $sql = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
+
+        if (mysqli_query($conn, $sql) === TRUE) {
+            echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
         }
+        mysqli_close($conn);
+    }
     ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -107,13 +107,13 @@
                         <p><strong>Reporta un problema</strong></p>
                         <form method="post" class="form-signup" name="incidencia" id="incidencia">
                             <p>Introduce tu nombre</p>
-                            <input type="text" id="nombre" name="nombre" required/>
+                            <input type="text" id="nombre" name="nombre" required />
                             <p>Introduce correo de contacto</p>
-                            <input type="email" id="correo" name="correo" required/>
+                            <input type="email" id="correo" name="correo" required />
                             <p>Mensaje</p>
-                            <input type="text" id="mensaje" name="mensaje" required/>
+                            <input type="text" id="mensaje" name="mensaje" required />
                             <p>&nbsp;</p>
-                            <input type="submit" value="enviar">
+                            <input type="submit" value="Enviar">
                         </form>
                     </section>
                 </div>

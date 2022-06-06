@@ -85,7 +85,7 @@
                         <p>Mensaje</p>
                         <input type="text" id="mensaje" name="mensaje" required />
                         <p>&nbsp;</p>
-                        <input type="submit" value="enviar">
+                        <input type="submit" value="Enviar">
                     </form>
                 </div>
             </div>
