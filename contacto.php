@@ -7,12 +7,22 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Iconos de Font Awesome -->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert2@11.4.16/dist/sweetalert2.all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <link rel="stylesheet" href="css/styles.css"><!--Acceso a nuestro css-->
         <style>
         body {background-color: black;}
+       .form-signup{
+            background-color: white;
+            border-radius: 10px;
+            opacity: 0.95;
+            font-weight: bolder;
+        }
+        .contact-section{
+            opacity: 0.95;
+        }
         </style>
     </head>
 
@@ -40,7 +50,7 @@
                 $sql = "INSERT INTO contacto (nombre, correo, mensaje) VALUES('".$nombre."', '".$correo."', '".$mensaje."')";
 
                 if (mysqli_query($conn,$sql) === TRUE) {
-                     echo "<br>Mensaje enviado<br>"; 
+                    echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
