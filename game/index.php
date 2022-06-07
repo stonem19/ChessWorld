@@ -16,6 +16,13 @@
   </head>
   <body>
     <a class="navbar-brand" href="../index.php">Inicio</a>
+    <?php
+    require_once '../conexion.php';
+    if(!isset($_SESSION['usuario']))
+      echo "<a class='navbar-brand' href='../seleccionNoUser.php'>Pantalla de Selección</a>";
+    else
+      echo "<a class='navbar-brand' href='../seleccionUser.php'>Pantalla de Selección</a>";
+    ?>
     <div class="webgl-content">
       <div id="gameContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
