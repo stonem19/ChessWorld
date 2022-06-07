@@ -29,6 +29,10 @@
      <?php
         //error_reporting(0);
         require_once 'conexion.php';
+        
+        if ($_SESSION["permisos"]!="AAA") {
+            header("location: index.php");
+          }
 
         //Lectura en la base de datos 
         function lectura()
