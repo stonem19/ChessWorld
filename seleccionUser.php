@@ -24,15 +24,16 @@
         }
     </style>
 </head>
+
 <body>
     <?php
-        error_reporting(0);
-        // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
-        session_start();
-        $nombre = $_POST['nombre'];
-        $_SESSION['nombre']= $nombre;
-        $clase = $_POST['clase'];
-        $_SESSION['clase']= $clase;
+    error_reporting(0);
+    // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
+    session_start();
+    $nombre = $_POST['nombre'];
+    $_SESSION['nombre'] = $nombre;
+    $clase = $_POST['clase'];
+    $_SESSION['clase'] = $clase;
     ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -57,28 +58,28 @@
             <!-- Fila de opciones -->
             <div class="container py-4">
                 <div class="p-5 mb-4 bg-light rounded-3">
-                <div class="container-fluid py-5">
-                    <h1 class="display-5 fw-bold">Juega contra otro jugador</h1>
-                    <p class="col-md-8 fs-4">Podrás jugar en 3D contra otro jugador de forma local. </p>
-                    <button class="btn btn-primary btn-lg" onclick="window.location='game/index.html'" type="button">¡A jugar!</button> 
-                </div>
+                    <div class="container-fluid py-5">
+                        <h1 class="display-5 fw-bold">Juega contra otro jugador</h1>
+                        <p class="col-md-8 fs-4">Podrás jugar en 3D contra otro jugador de forma local. </p>
+                        <button class="btn btn-primary btn-lg" onclick="window.location='game/index.html'" type="button">¡A jugar!</button>
+                    </div>
                 </div>
 
                 <div class="row align-items-md-stretch">
-                <div class="col-md-6">
-                    <div class="h-100 p-5 text-white bg-dark rounded-3">
-                    <h2>Movimientos</h2>
-                    <p>Parece algo sencillo, pero siempre está bien recordar como se mueven las piezas de ajedrez. ¡En una partida no podrás dudar!</p>
-                    <button class="btn btn-outline-light" type="button" onclick="window.location='usergame.php'">¡Realiza el test!</button>
+                    <div class="col-md-6">
+                        <div class="h-100 p-5 text-white bg-dark rounded-3">
+                            <h2>Movimientos</h2>
+                            <p>Parece algo sencillo, pero siempre está bien recordar como se mueven las piezas de ajedrez. ¡En una partida no podrás dudar!</p>
+                            <button class="btn btn-outline-light" type="button" onclick="window.location='usergame.php'">¡Realiza el test!</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="h-100 p-5 bg-light border rounded-3">
-                    <h2>Aperturas y jugadas</h2>
-                    <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
-                    <button class="btn btn-outline-secondary" type="button" onclick="window.location=''">¡Enseñame!</button>
+                    <div class="col-md-6">
+                        <div class="h-100 p-5 bg-light border rounded-3">
+                            <h2>Aperturas y jugadas</h2>
+                            <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
+                            <button class="btn btn-outline-secondary" type="button" onclick="window.location=''">¡Enseñame!</button>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
 
