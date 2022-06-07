@@ -50,15 +50,20 @@
     $_SESSION['nombre'] = $fila3["nombre"];
     $_SESSION['aciertos'] = $fila4["aciertos"];
 
+    //Variables contacto
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    $mensaje = $_POST['mensaje'];
+
     /* Realizar registro incidencias*/
     if (isset($_POST["nombre"])) {
 
-        $sql = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
+        $sql1 = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
 
-        if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
+        if (mysqli_query($_SESSION["con"], $sql1) === TRUE) {
             echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
         } else {
-            echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
+            echo "Error: " . $sql1 . "<br>" . $_SESSION["con"]->error;
         }
         //mysqli_close($_SESSION["con"]);
     }
@@ -66,8 +71,10 @@
     //Se llama a esta función desde el código JS al final de usergame.php cuando se valida que la respuesta es correcta
     function escritura($usuario)
     {
+        echo '¡';
         /* Insert en la base de datos para sumar puntos si se acierta*/
         $sql = "UPDATE usuarios set aciertos=aciertos+1 where nombre= '" . $usuario . "'";
+
 
         //Valida que la consulta esté bien hecha
         if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
@@ -84,7 +91,7 @@
 
     //mysqli_close($_SESSION["con"]);
     ?>
-    <!-- Barra de navegación -->
+    <!-- Barra de navegación 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.php">Inicio</a>
@@ -96,7 +103,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>-->
     <!-- Test utilizando formularios -->
     <section class="projects-section bg-light" id="projects">
         <div class="container px-4 px-lg-5">
@@ -285,6 +292,7 @@
             if (pregunta1 == "A") {
                 <?php escritura($usuario); ?>
                 Swal.fire("Correcto! El caballo con un movimiento en L, ya que el peón solo captura moviendo una posición en diagonal y la torre en horizontal y vertical");
+
             } else {
                 Swal.fire("Respuesta incorrecta");
             }
