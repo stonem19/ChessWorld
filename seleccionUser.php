@@ -29,7 +29,8 @@
     <?php
     error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
-    session_start();
+    // session_start();
+    echo session_status();
     $usuario = $_POST['usuario'];
     $_SESSION['usuario'] = $usuario;
     ?>
