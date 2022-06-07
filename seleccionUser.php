@@ -12,11 +12,9 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Bootstrap y CSS -->    
     <link rel="stylesheet" href="css/styles.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!--Acceso a nuestro css-->
-    <!-- Bootstrap -->
-    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
         body {
@@ -26,14 +24,6 @@
 </head>
 
 <body>
-    <?php
-    error_reporting(0);
-    // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
-    // session_start();
-    echo session_status();
-    $usuario = $_POST['usuario'];
-    $_SESSION['usuario'] = $usuario;
-    ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
