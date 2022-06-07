@@ -111,44 +111,34 @@
                 <h2 class="text-blackF mb-5">Aperturas de Ajedrez</h2>
             </div>
 
-            <!-- Fila de opciones -->
+            <!-- Modales con aperturas -->
             <div class="container py-4">
                 <div class="row align-items-md-stretch">
                     <div class="col-md-6">
                         <div class="h-100 p-5 text-white bg-dark rounded-3">
-                            <h2>Movimientos</h2>
-                            <p>Parece algo sencillo, pero siempre está bien recordar como se mueven las piezas de ajedrez. ¡En una partida no podrás dudar!</p>
-                            <button class="btn btn-outline-light" type="button" onclick="window.location='movimientos.php'">¡Realiza el test!</button>
+                            <h2>Defensa Nimzo-india</h2>
+                            <p> Existe una gran cantidad de variantes, pero las ideas estratégicas son simples. Las negras tratarán de lanzar un ataque en el centro y en el ala de dama, mientras que las blancas lo harán en el ala de rey.</p>
+                            <button class="btn btn-outline-light" type="button" onclick="window.location='movimientos.php'">¡Quiero aprender!</button>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="h-100 p-5 bg-light border rounded-3">
-                            <h2>Aperturas y jugadas</h2>
-                            <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
-                            <button class="btn btn-outline-secondary" type="button" onclick="window.location=''">¡Enseñame!</button>
+                        <div class="h-100 p-5 text-white bg-dark border rounded-3">
+                            <!-- bg-light -->
+                            <h2>Defensa Francesa</h2>
+                            <p>La defensa francesa está encuadrada dentro de las aperturas semiabiertas. En conjunto, la defensa francesa es una muy buena apertura que ha sido utilizada por numerosos grandes jugadores a lo largo de la historia.</p>
+                            <button class="btn btn-outline-light" type="button" onclick="window.location=''">¡Enseñame!</button>
+                        </div>
+                    </div>
+                    <p>&nbsp;</p>
+                    <div class="col-md-12">
+                        <div class="h-100 p-5 text-white bg-dark border rounded-3">
+                            <!-- bg-light -->
+                            <h2>Defensa Siciliana</h2>
+                            <p>Goza de un gran prestigio entre los jugadores de cualquier nivel debido a su carácter agresivo, a la flexibilidad de las posiciones que otorga y, de manera significativa, al hecho de haber sido adoptada por varios campeones mundiales.</p>
+                            <button class="btn btn-outline-light" type="button" onclick="window.location=''">¡A la Siciliana!</button>
                         </div>
                     </div>
                 </div>
-                <p>&nbsp;</p>
-                <div class="row align-items-md-stretch">
-                    <div class="col-md-6">
-                        <div class="h-100 p-5 text-white bg-dark rounded-3">
-                            <h2>Movimientos</h2>
-                            <p>Parece algo sencillo, pero siempre está bien recordar como se mueven las piezas de ajedrez. ¡En una partida no podrás dudar!</p>
-                            <button class="btn btn-outline-light" type="button" onclick="window.location='movimientos.php'">¡Realiza el test!</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="h-100 p-5 bg-light border rounded-3">
-                            <h2>Aperturas y jugadas</h2>
-                            <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
-                            <button class="btn btn-outline-secondary" type="button" onclick="window.location=''">¡Enseñame!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
     </section>
     </div>
     <!-- Pie de página -->
