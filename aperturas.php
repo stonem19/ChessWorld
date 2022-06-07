@@ -34,35 +34,17 @@
     <?php
     error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
-    session_start();
-    $nombre = $_POST['nombre'];
-    $_SESSION['nombre'] = $nombre;
-    $clase = $_POST['clase'];
-    $_SESSION['clase'] = $clase;
-
-    //Variables contacto
-    $nombre = $_POST['nombre'];
-    $correo = $_POST['correo'];
-    $mensaje = $_POST['mensaje'];
-
-    /* Conexión BBDD */
-    $servername = "localhost";
-    $database = "bbdd";
-    $username = "root";
-    $password = "";
-
-    // Conexión BBDD
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    require_once 'conexion.php';
 
     /* Realizar registro incidencias*/
     if (isset($_POST["nombre"])) {
 
         $sql = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
 
-        if (mysqli_query($conn, $sql) === TRUE) {
+        if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
             echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
         }
         mysqli_close($conn);
     }
