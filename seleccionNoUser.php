@@ -97,8 +97,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
     </section>
     <!-- Pie de página -->
     <footer class="footer bg-black small text-center text-white-50">
