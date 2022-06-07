@@ -83,16 +83,16 @@
                 <div class="row align-items-md-stretch">
                     <div class="col-md-6">
                         <div class="h-100 p-5 text-white bg-dark rounded-3">
-                            <h2>Movimientos</h2>
-                            <p>Parece algo sencillo, pero siempre está bien recordar como se mueven las piezas de ajedrez. ¡En una partida no podrás dudar!</p>
+                            <h2>Comprueba tus conocimientos</h2>
+                            <p>Siempre está bien recordar cómo se mueven las piezas de ajedrez y poner a prueba tus conocimientos. ¡En una partida no podrás dudar!</p>
                             <button class="btn btn-outline-light" type="button" onclick="window.location='movimientos.php'">¡Realiza el test!</button>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="h-100 p-5 bg-light border rounded-3">
-                            <h2>Aperturas y jugadas</h2>
+                            <h2>Aperturas</h2>
                             <p>Si no sabes lo que está haciendo tu contrincante, siempre estarás en desventaja. Deberías conocer las aperturas y jugadas básicas del ajedrez.</p>
-                            <button class="btn btn-outline-secondary" type="button" onclick="window.location=''">¡Enseñame!</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="window.location='aperturas.php'">¡Enseñame!</button>
                         </div>
                     </div>
                 </div>
