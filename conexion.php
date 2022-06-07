@@ -2,7 +2,7 @@
 session_start();
 
 $servername = "localhost";
-$database = "hlc_practicaweb";
+$database = "bbdd";
 $username = "root";
 $password = "";
 
