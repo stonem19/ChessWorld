@@ -30,10 +30,8 @@
     error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
     session_start();
-    $nombre = $_POST['nombre'];
-    $_SESSION['nombre'] = $nombre;
-    $clase = $_POST['clase'];
-    $_SESSION['clase'] = $clase;
+    $usuario = $_POST['usuario'];
+    $_SESSION['usuario'] = $usuario;
     ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
