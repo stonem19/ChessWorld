@@ -30,17 +30,16 @@
 
 <body>
     <?php
-    //error_reporting(0);
+    error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
     require_once 'conexion.php';
     $usuario = $_SESSION['usuario'];
-    //$_SESSION['usuario'] = $usuario;
 
     /* Consulta puntos y nombre desde la base de datos */
     $user = "SELECT nombre from usuarios WHERE nombre ='" . $usuario . "'";
     $userok = mysqli_query($_SESSION["con"], $user) or die('Error en el query database');
 
-    $puntos = "SELECT aciertos from usuarios WHERE nombre ='$usuario'";
+    $puntos = "SELECT puntos from usuarios WHERE nombre ='$usuario'";
     $puntosok = mysqli_query($_SESSION["con"], $puntos) or die('Error en el query database');
 
     //Valida que la consulta esté bien hecha
@@ -48,7 +47,7 @@
     $fila4 = mysqli_fetch_array($puntosok);
 
     $_SESSION['nombre'] = $fila3["nombre"];
-    $_SESSION['aciertos'] = $fila4["aciertos"];
+    $_SESSION['puntos'] = $fila4["puntos"];
 
     //Variables contacto
     $nombre = $_POST['nombre'];
@@ -59,7 +58,7 @@
     if (isset($_POST["nombre"])) {
 
         $sql1 = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
-
+       
         if (mysqli_query($_SESSION["con"], $sql1) === TRUE) {
             echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
         } else {
@@ -71,9 +70,8 @@
     //Se llama a esta función desde el código JS al final de usergame.php cuando se valida que la respuesta es correcta
     function escritura($usuario)
     {
-        echo '¡';
         /* Insert en la base de datos para sumar puntos si se acierta*/
-        $sql = "UPDATE usuarios set aciertos=aciertos+1 where nombre= '" . $usuario . "'";
+        $sql = "UPDATE usuarios set puntos= puntos + 1 where nombre = '" . $usuario . "'";
 
 
         //Valida que la consulta esté bien hecha
@@ -91,7 +89,7 @@
 
     //mysqli_close($_SESSION["con"]);
     ?>
-    <!-- Barra de navegación 
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.php">Inicio</a>
@@ -103,7 +101,7 @@
                 </ul>
             </div>
         </div>
-    </nav>-->
+    </nav>
     <!-- Test utilizando formularios -->
     <section class="projects-section bg-light" id="projects">
         <div class="container px-4 px-lg-5">
@@ -115,7 +113,7 @@
                         <div class="d-flex h-100">
                             <div class="project-text w-100 my-auto text-center text-lg-left">
                                 <h4 class="text-white">Usuario <?php echo $_SESSION['usuario']; ?></h4>
-                                <p class="mb-0 text-white-50">Aciertos <?php echo $_SESSION['aciertos']; ?></p>
+                                <p class="mb-0 text-white-50">Puntos <?php echo $_SESSION['puntos']; ?></p>
                                 <hr class="d-none d-lg-block mb-0 ms-0" />
                             </div>
                         </div>
