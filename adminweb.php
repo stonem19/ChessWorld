@@ -29,16 +29,16 @@
      <?php
         //error_reporting(0);
         require_once 'conexion.php';
-        
+        /*
         if ($_SESSION["permisos"]!="AAA") {
             header("location: index.php");
           }
-
+        */  
         //Lectura en la base de datos 
         function lectura()
         {
 
-            $query = "SELECT nombre, aciertos, permisos, id from usuarios";
+            $query = "SELECT nombre, permisos, id from usuarios";
 
             $result = mysqli_query($_SESSION["con"], $query);
 
@@ -55,8 +55,6 @@
             while ($row = mysqli_fetch_array($result)) {
                 echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
                     $row["nombre"] . "</font></td>";
-                echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
-                    $row["aciertos"] . "</font></td>";
                 echo "<td width=\"25%\"><font face=\"verdana\">" .
                     $row["permisos"] . "</font></td>";
                 echo "<td width=\"25%\"><font face=\"verdana\">" .
