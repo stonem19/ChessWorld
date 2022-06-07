@@ -57,7 +57,8 @@
         /* Consulta permisos */
         $permissions = "SELECT permisos from usuarios WHERE nombre ='" . $usuario . "'";
         $permissionsok = mysqli_query($_SESSION["con"], $permissions) or die('Error en el query database');
-
+        $_SESSION['permisos'] = $permissions;
+        
         //Valida que la consulta esté bien hecha
         $fila1 = mysqli_fetch_array($userok);
         $fila2 = mysqli_fetch_array($passok);
