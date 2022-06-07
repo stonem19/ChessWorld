@@ -32,63 +32,59 @@
     <?php
     //error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
-    session_start();
-    $usuario = $_POST['usuario'];
-    $_SESSION['usuario'] = $usuario;
-
-    $usuarioreg = $_POST['usuarioreg'];
-    $_SESSION['usuarioreg'] = $usuario;
-
-    /* BBDD */
-    // Variables
-    $servername = "localhost";
-    $database = "bbdd";
-    $username = "root";
-    $password = "";
-
-    // Conexión BBDD
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    require_once 'conexion.php';
+    $usuario = $_SESSION['usuario'];
+    //$_SESSION['usuario'] = $usuario;
 
     /* Consulta puntos y nombre desde la base de datos */
-    $user = "SELECT nombre from usuarios WHERE nombre ='" . $usuarioreg . "'";
-    $userok = mysqli_query($conn, $user) or die('Error en el query database');
+    $user = "SELECT nombre from usuarios WHERE nombre ='" . $usuario . "'";
+    $userok = mysqli_query($_SESSION["con"], $user) or die('Error en el query database');
 
-    $puntos = "SELECT aciertos from usuarios WHERE nombre ='$usuarioreg'";
-    $puntosok = mysqli_query($conn, $puntos) or die('Error en el query database');
+    $puntos = "SELECT aciertos from usuarios WHERE nombre ='$usuario'";
+    $puntosok = mysqli_query($_SESSION["con"], $puntos) or die('Error en el query database');
 
     //Valida que la consulta esté bien hecha
-    $fila3 = mysqli_fetch_array($puntosok);
-    $fila4 = mysqli_fetch_array($userok);
+    $fila3 = mysqli_fetch_array($userok);
+    $fila4 = mysqli_fetch_array($puntosok);
+
+    $_SESSION['nombre'] = $fila3["nombre"];
+    $_SESSION['aciertos'] = $fila4["aciertos"];
+
+    /* Realizar registro incidencias*/
+    if (isset($_POST["nombre"])) {
+
+        $sql = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
+
+        if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
+            echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
+        } else {
+            echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
+        }
+        //mysqli_close($_SESSION["con"]);
+    }
 
     //Se llama a esta función desde el código JS al final de usergame.php cuando se valida que la respuesta es correcta
-    function escritura($usuarioreg)
+    function escritura($usuario)
     {
-
-        //Make var
-        $servername = "localhost";
-        $database = "bbdd";
-        $username = "root";
-        $password = "";
-        // Create connection
-
-        $conn = mysqli_connect($servername, $username, $password, $database);
-
         /* Insert en la base de datos para sumar puntos si se acierta*/
-        $sql = "UPDATE usuarios set aciertos=aciertos+1 where nombre= '" . $usuarioreg . "'";
-        $sqlok = mysqli_query($conn, $sql) or die('Error en el query database');
+        $sql = "UPDATE usuarios set aciertos=aciertos+1 where nombre= '" . $usuario . "'";
 
         //Valida que la consulta esté bien hecha
-        $fila1 = mysqli_fetch_array($sqlok);
-        //$sql = "UPDATE usuarios set aciertos=aciertos+1 where nombre='" . $usuario . "'";
+        if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
+            //echo '<script type="text/javascript">', 'Swal.fire("Puntuación registrada");', '</script>';;
+        } else {
+            echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
+        }
+
         /* AVISO - Hay que tener habilitado en la base de datos que acepte UPDATE sin restrinciones */
         /* Se puede configurar en PREFERENCES > SQL Editor y desmarcar la casilla Safe Updates */
 
-        mysqli_close($conn);
+        //mysqli_close($_SESSION["con"]);
     }
 
-    mysqli_close($conn);
+    //mysqli_close($_SESSION["con"]);
     ?>
-    <!-- Barra de navegación
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.php">Inicio</a>
@@ -100,8 +96,8 @@
                 </ul>
             </div>
         </div>
-    </nav>-->
-    <!-- Juego utilizando formularios -->
+    </nav>
+    <!-- Test utilizando formularios -->
     <section class="projects-section bg-light" id="projects">
         <div class="container px-4 px-lg-5">
             <!-- Contenedor Usuario y clase -->
@@ -111,8 +107,8 @@
                     <div class="bg-black text-center h-100 project">
                         <div class="d-flex h-100">
                             <div class="project-text w-100 my-auto text-center text-lg-left">
-                                <h4 class="text-white">Usuario <?php echo $fila4["nombre"]; ?></h4>
-                                <p class="mb-0 text-white-50">Aciertos <?php echo $fila3["aciertos"]; ?></p>
+                                <h4 class="text-white">Usuario <?php echo $_SESSION['usuario']; ?></h4>
+                                <p class="mb-0 text-white-50">Aciertos <?php echo $_SESSION['aciertos']; ?></p>
                                 <hr class="d-none d-lg-block mb-0 ms-0" />
                             </div>
                         </div>
@@ -120,6 +116,28 @@
                 </div>
             </div>
             &nbsp;
+            <!-- ACCIÓN DEL MODAL -->
+            <div class="modal" id="modal">
+                <div class="modal-dialog">
+                    <header class="modal-header">
+                        &nbsp;
+                        <div data-close></div>
+                    </header>
+                    <section class="modal-content">
+                        <p><strong>Reporta un problema</strong></p>
+                        <form method="post" class="form-signup" name="incidencia" id="incidencia">
+                            <p>Introduce tu nombre</p>
+                            <input type="text" id="nombre" name="nombre" required />
+                            <p>Introduce correo de contacto</p>
+                            <input type="email" id="correo" name="correo" required />
+                            <p>Mensaje</p>
+                            <input type="text" id="mensaje" name="mensaje" required />
+                            <p>&nbsp;</p>
+                            <input type="submit" value="Enviar">
+                        </form>
+                    </section>
+                </div>
+            </div>
             <!-- Contenedor Jugada 1 -->
             <div class="row gx-0 mb-4 mb-lg-5 align-items-center" id="pregunta">
                 <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/1.jpg" alt="..." /></div>
@@ -265,7 +283,7 @@
             pregunta1 = document.getElementById('pregunta1').value;
 
             if (pregunta1 == "A") {
-                <?php escritura($usuarioreg); ?>
+                <?php escritura($usuario); ?>
                 Swal.fire("Correcto! El caballo con un movimiento en L, ya que el peón solo captura moviendo una posición en diagonal y la torre en horizontal y vertical");
             } else {
                 Swal.fire("Respuesta incorrecta");
@@ -277,7 +295,7 @@
             pregunta2 = document.getElementById('pregunta2').value;
 
             if (pregunta2 == "B") {
-                <?php escritura($usuarioreg); ?>
+                <?php escritura($usuario); ?>
                 Swal.fire("Correcto! El alfil con un movimiento en diagonal, ya que el rey solo mueve una posición en línea y el peón solo captura una posición en diagonal");
             } else {
                 Swal.fire("Respuesta incorrecta");
@@ -289,7 +307,7 @@
             pregunta3 = document.getElementById('pregunta3').value;
 
             if (pregunta3 == "C") {
-                <?php escritura($usuarioreg); ?>
+                <?php escritura($usuario); ?>
                 Swal.fire("Correcto! El movimiento no es posible, ya que el caballo mueve en L y la torre en la misma línea en horizontal o vertical");
             } else {
                 Swal.fire("Respuesta incorrecta");
