@@ -49,5 +49,3 @@ select uuid() as uid;
 INSERT INTO freeuser (registro) VALUES(NOW());
 
 
-
-
