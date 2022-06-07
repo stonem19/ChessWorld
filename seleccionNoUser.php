@@ -27,28 +27,21 @@
 
 <body>
     <?php
-    error_reporting(0);
+    //error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
-    session_start();
-    $nombre = $_POST['nombre'];
-    $_SESSION['nombre'] = $nombre;
-    $clase = $_POST['clase'];
-    $_SESSION['clase'] = $clase;
+    require_once 'conexion.php';
 
-    /* Conexión BBDD para registrar actividad */
-    // Variables
-    $servername = "localhost";
-    $database = "bbdd";
-    $username = "root";
-    $password = "";
-
-    // Conexión BBDD
-    $conn = mysqli_connect($servername, $username, $password, $database);
-
-    if ($conn != null) {
+    if ($_SESSION["con"] != null) {
         $sql = "INSERT INTO freeuser (registro) VALUES(NOW())";
+
+        if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
+            echo 'Actividad registrada';
+        } else {
+            echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
+        }
+    }else{
+        echo "Sin conexión a la BBDD";
     }
-    mysqli_close($conn);
     ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
