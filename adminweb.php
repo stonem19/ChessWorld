@@ -28,37 +28,15 @@
  <body>
      <?php
         //error_reporting(0);
-
-        /* BBDD */
-        $servername = "localhost";
-        $database = "bbdd";
-        $username = "root";
-        $password = "";
-
-        // Conexión BBDD
-        $conn = mysqli_connect($servername, $username, $password, $database);
-
-        /* Consulta nombre usuario BBDD 
-        $nombre = "SELECT nombre from usuarios WHERE nombre ='User'";
-        $nombreok = mysqli_query($conn, $nombre) or die('Error en el query database');
-        $fila4 = mysqli_fetch_array($nombreok);*/
+        require_once 'conexion.php';
 
         //Lectura en la base de datos 
         function lectura()
         {
-            //Make var
-            $servername = "localhost";
-            $database = "bbdd";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-
-            $conn = mysqli_connect($servername, $username, $password, $database);
 
             $query = "SELECT nombre, aciertos, permisos, id from usuarios";
 
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                     <h3>Usuarios</h3>
@@ -84,19 +62,9 @@
 
         function permisos()
         {
-            //Make var
-            $servername = "localhost";
-            $database = "bbdd";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-
-            $conn = mysqli_connect($servername, $username, $password, $database);
-
             $query = "SELECT tipo, codigo from permisos";
 
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                 <h3>Permisos</h3>
@@ -117,19 +85,9 @@
 
         function actividadUsers()
         {
-            //Make var
-            $servername = "localhost";
-            $database = "bbdd";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-
-            $conn = mysqli_connect($servername, $username, $password, $database);
-
             $query = "SELECT registro, usuario from acountuser";
 
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                 <h3>Actividad de usuarios registrados</h3>
@@ -150,19 +108,9 @@
 
         function actividadNoUsers()
         {
-            //Make var
-            $servername = "localhost";
-            $database = "bbdd";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-
-            $conn = mysqli_connect($servername, $username, $password, $database);
-
             $query = "SELECT registro, usuario from acountuser";
 
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                 <h3>Actividad de usuarios no registrados</h3>
@@ -180,19 +128,9 @@
 
         function incidencias()
         {
-            //Make var
-            $servername = "localhost";
-            $database = "bbdd";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-
-            $conn = mysqli_connect($servername, $username, $password, $database);
-
             $query = "SELECT nombre, correo, mensaje from incidencias";
 
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                 <h3>Incidencias</h3>
@@ -214,19 +152,9 @@
 
         function contacto()
         {
-            //Make var
-            $servername = "localhost";
-            $database = "bbdd";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-
-            $conn = mysqli_connect($servername, $username, $password, $database);
-
             $query = "SELECT nombre, correo, mensaje from contacto";
 
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                 <h3>Contacto</h3>
@@ -245,8 +173,6 @@
                     $row["mensaje"] . "</font></td>";
             }
         }
-
-        mysqli_close($conn);
 
         ?>
      <!-- Barra de navegación -->
