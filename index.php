@@ -23,7 +23,8 @@
     <?php
     error_reporting(0);
     /* Sesión para enviar datos básicos a juego.php (juego sin registro) */
-    session_start();
+    require_once 'conexion.php';
+
     if (!isset($_SESSION['temps'])) {
         $_SESSION['temps'] = 0;
     } else {
@@ -42,30 +43,20 @@
     $fallos = 0;
     $permisos = "CCC";
 
-    /* Conexión BBDD para usuarios registrados */
-    $servername = "localhost";
-    $database = "bbdd";
-    $username = "root";
-    $password = "";
-
-    // Conexión BBDD
-    $conn = mysqli_connect($servername, $username, $password, $database);
-
     /* Comprobar usuario BBDD */
-
     if (isset($_POST["usuario"])) {
 
         /* Consulta nombre */
         $user = "SELECT nombre from usuarios WHERE nombre ='" . $usuario . "'";
-        $userok = mysqli_query($conn, $user) or die('Error en el query database');
+        $userok = mysqli_query($_SESSION["con"], $user) or die('Error en el query database');
 
         /* Consulta password */
         $pass = "SELECT pass from usuarios WHERE pass ='" . $password2 . "'";
-        $passok = mysqli_query($conn, $pass) or die('Error en el query database');
+        $passok = mysqli_query($_SESSION["con"], $pass) or die('Error en el query database');
 
         /* Consulta permisos */
         $permissions = "SELECT permisos from usuarios WHERE nombre ='" . $usuario . "'";
-        $permissionsok = mysqli_query($conn, $permissions) or die('Error en el query database');
+        $permissionsok = mysqli_query($_SESSION["con"], $permissions) or die('Error en el query database');
 
         //Valida que la consulta esté bien hecha
         $fila1 = mysqli_fetch_array($userok);
@@ -76,10 +67,10 @@
         if ($fila1['nombre'] == $usuario) {
             $sql1 = "INSERT INTO acountuser (registro, usuario) VALUES(NOW(), '" . $usuario . "')";
 
-            if (mysqli_query($conn, $sql1) === TRUE) {
-                echo "<br>Registrado movimiento en la base de datos<br>";
+            if (mysqli_query($_SESSION["con"], $sql1) === TRUE) {
+                echo "<br>Actividad registrada en la base de datos<br>";
             } else {
-                echo "Error: " . $sql1 . "<br>" . $conn->error;
+                echo "Error: " . $sql1 . "<br>" . $_SESSION["con"]->error;
             }
         }
 
@@ -96,8 +87,6 @@
         } else {
             echo "Usuario o contraseña incorrecto";
         }
-
-        mysqli_close($conn);
     }
 
     /* Realizar registro */
@@ -105,12 +94,13 @@
 
         $sql = "INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) VALUES('" . $usuarioreg . "', '" . $passw . "', '" . $dni . "', '" . $aciertos . "', '" . $fallos . "', '" . $permisos . "', uuid())";
 
-        if (mysqli_query($conn, $sql) === TRUE) {
-            echo '<script type="text/javascript">', 'Swal.fire("Usuario registrado correctamente");', '</script>';;
+        if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
+            echo '<script type="text/javascript">', 'Swal.fire("Usuario registrado correctamente");', '</script>';
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
         }
-        mysqli_close($conn);
+        
+        //mysqli_close($_SESSION["con"]);
     }
     ?>
 
@@ -147,7 +137,7 @@
                     <div class="modal" id="modal2">
                         <div class="modal-dialog">
                             <header class="modal-header">
-                                <!--Jugar como Usuario-->
+                                <!-- INICIO SESION -->
                                 &nbsp;
                                 <div data-close></div>
                             </header>
