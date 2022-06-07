@@ -3,8 +3,7 @@ CREATE TABLE usuarios (
 nombre VARCHAR (25),
 pass VARCHAR (6),
 dni VARCHAR (9),
-aciertos BIGINT (5),
-fallos BIGINT (5),
+puntos BIGINT (5),
 permisos VARCHAR (3),
 id VARCHAR (36));
 
@@ -30,8 +29,8 @@ correo VARCHAR (50),
 mensaje TEXT (500));
 
 /* INSERTS EN BASE DE DATOS PARA COMPROBAR FUNCINAMIENTO */
-INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) values ("Usuario","123456","14512684H","0","0","CCC", uuid());
-INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) values ("Admin","789101","54848741K","0","0", "AAA", uuid());
+INSERT INTO usuarios (nombre, pass, dni, puntos, permisos, id) values ("Usuario","123456","14512684H","0","CCC", uuid());
+INSERT INTO usuarios (nombre, pass, dni, puntos, permisos, id) values ("Admin","789101","54848741K","0", "AAA", uuid());
 
 INSERT INTO permisos (tipo, codigo) values ("Administrador", "AAA");
 INSERT INTO permisos (tipo, codigo) values ("Empleado", "BBB");
@@ -47,5 +46,5 @@ INSERT INTO acountuser (registro) VALUES(NOW());
 SELECT LEFT(UUID(), 6);
 select uuid() as uid;
 INSERT INTO freeuser (registro) VALUES(NOW());
-
+UPDATE usuarios set aciertos=aciertos+1 where nombre= 'Jose';
 
