@@ -110,27 +110,30 @@
 
         function actividadNoUsers()
         {
-            $query = "SELECT registro, usuario from acountuser";
+            $query = "SELECT registro, hostinfo from freeuser";
 
             $result = mysqli_query($_SESSION["con"], $query);
 
             $tabla = '<table border="1" cellspacing=1 cellpadding=2 style="font-size: 8pt">
                 <h3>Actividad de usuarios no registrados</h3>
                 <tr>
-                <td><font face="verdana"><b>FECHA</b></font></td>
+                <td><font face="verdana"><b>FECHA Y HOST</b></font></td>
                 </tr>';
+                
 
             echo ($tabla);
 
             while ($row = mysqli_fetch_array($result)) {
                 echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
                     $row["registro"] . "</font></td>";
+                    echo "<tr><td width=\"25%\"><font face=\"verdana\">" .
+                    $row["hostinfo"] . "</font></td>";
             }
         }
 
         function incidencias()
         {
-            $query = "SELECT nombre, correo, mensaje from incidencias";
+            $query = "SELECT nombre, correo, mensaje from tramites where tipo = 'Incidencia'" ;
 
             $result = mysqli_query($_SESSION["con"], $query);
 
@@ -154,7 +157,7 @@
 
         function contacto()
         {
-            $query = "SELECT nombre, correo, mensaje from contacto";
+            $query = "SELECT nombre, correo, mensaje from tramites where tipo = 'Contacto'" ;
 
             $result = mysqli_query($_SESSION["con"], $query);
 
