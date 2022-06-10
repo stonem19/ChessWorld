@@ -46,7 +46,7 @@
     /* Realizar registro  en BBDD*/
     if (isset($_POST["nombre"])) {
 
-        $sql = "INSERT INTO contacto (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
+        $sql = "INSERT INTO tramites (nombre, correo, tipo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', 'Contacto','" . $mensaje . "')";
 
         if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
             echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
