@@ -10,6 +10,7 @@
     <!--Acceso css-->
     <script src="TemplateData/UnityProgress.js"></script>  
     <script src="Build/UnityLoader.js"></script>
+    <script src="https://unpkg.com/sweetalert2@11.4.16/dist/sweetalert2.all.js" crossorigin="anonymous"></script>
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/game.json", {onProgress: UnityProgress});
     </script>
@@ -18,6 +19,7 @@
     <a class="navbar-brand" href="../index.php">Inicio</a>
     <?php
     require_once '../conexion.php';
+    echo '<script type="text/javascript">', 'Swal.fire("Ejemplo de integración de un proyecto de Unity a un aplicativo web. El ajedrez no forma partre del proyecto presentado.");', '</script>';;
     if(!isset($_SESSION['usuario']))
       echo "<a class='navbar-brand' href='../seleccionNoUser.php'>Pantalla de Selección</a>";
     else
