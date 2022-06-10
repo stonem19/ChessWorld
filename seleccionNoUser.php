@@ -32,7 +32,7 @@
     require_once 'conexion.php';
 
     if ($_SESSION["con"] != null) {
-        $sql = "INSERT INTO freeuser (registro) VALUES(NOW())";
+        $sql = "INSERT INTO freeuser (registro, hostinfo) VALUES(NOW(), connection_id())";
 
         if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
             echo 'Actividad registrada';
@@ -68,8 +68,8 @@
                 <div class="p-5 mb-4 bg-light rounded-3">
                     <div class="container-fluid py-5">
                         <h1 class="display-5 fw-bold">Juega contra otro jugador</h1>
-                        <p class="col-md-8 fs-4">Podrás jugar en 3D contra otro jugador de forma local. </p>
-                        <button class="btn btn-primary btn-lg" onclick="window.location='game/index.php'" type="button">¡A jugar!</button>
+                        <p class="col-md-8 fs-4">Podrás jugar contra otro jugador de forma local. </p>
+                        <button class="btn btn-primary btn-lg" type="button">Necesitas estar registrado</button>
                     </div>
                 </div>
 
