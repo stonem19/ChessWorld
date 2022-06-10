@@ -57,7 +57,7 @@
     /* Realizar registro incidencias*/
     if (isset($_POST["nombre"])) {
 
-        $sql1 = "INSERT INTO incidencias (nombre, correo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', '" . $mensaje . "')";
+        $sql1 = "INSERT INTO tramites (nombre, correo, tipo, mensaje) VALUES('" . $nombre . "', '" . $correo . "', 'Incidencia', '" . $mensaje . "')";
        
         if (mysqli_query($_SESSION["con"], $sql1) === TRUE) {
             echo '<script type="text/javascript">', 'Swal.fire("Mensaje enviado");', '</script>';
