@@ -41,6 +41,10 @@
             display: block;
             margin: auto;
         }
+
+        img{
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -49,12 +53,16 @@
     error_reporting(0);
     // Retomamos la sesión e indicamos que muestre por pantalla los datos de la misma
     require_once 'conexion.php';
+
+    if(!isset($_SESSION['usuario']))
+      echo "<a class='navbar-brand' href='../seleccionNoUser.php'>Pantalla de Selección</a>";
+    else
+      echo "<a class='navbar-brand' href='../seleccionUser.php'>Pantalla de Selección</a>";
     ?>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.php">Inicio</a>
-            <a class="navbar-brand" href="seleccionNoUser.php">Selección</a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
@@ -77,16 +85,20 @@
                     <div class="col-md-6">
                         <div class="h-100 p-5 text-white bg-dark rounded-3">
                             <h2>Defensa Nimzo-india</h2>
-                            <p> Existe una gran cantidad de variantes, pero las ideas estratégicas son simples. Las negras tratarán de lanzar un ataque en el centro y en el ala de dama, mientras que las blancas lo harán en el ala de rey.</p>
-                            <img src="assets\img\movimientos.png" class="aperturas">
+                            <p>Enroca del lado del rey para desarrollar tu defensa.</p>
+                            <p> Mueve la torre de H8 a la derecha hasta que quede en F8 y coloca a tu rey en G8. Ahora, tu rey estará protegido por una fila de peones y por la torre de forma que sea más difícil capturarlo.</p>
+                            <p>Mantén protegido al rey cerca de la esquina durante el resto de la partida para que tu oponente no pueda atacarlo con facilidad.</p>
+                            <img src="assets\img\nimzoindia4.png" class="aperturas">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="h-100 p-5 text-white bg-dark border rounded-3">
                             <!-- bg-light -->
                             <h2>Defensa Francesa</h2>
-                            <p>La defensa francesa está encuadrada dentro de las aperturas semiabiertas. En conjunto, la defensa francesa es una muy buena apertura que ha sido utilizada por numerosos grandes jugadores a lo largo de la historia.</p>
-                            <img src="assets\img\movimientos.png" class="aperturas">
+                            <p>Mueve la reina a B6 para tener opciones defensivas.</p>
+                            <p>Una vez que hayas movido el caballo, puedes realizar varios movimientos, pero uno de los más sólidos que puedes hacer es mover la reina a B6. La reina ejercerá presión sobre el peón en B2 y funcionara como otra capa de protección para tu peón en C5.</p>
+                            <p>Evita capturar al peón en B2 en tu próximo turno, ya que tu oponente podría capturar tu reina con facilidad usando su alfil.</p>
+                            <img src="assets\img\francesa5.png" class="aperturas">
                         </div>
                     </div>
                     <p>&nbsp;</p>
@@ -94,8 +106,11 @@
                         <div class="h-100 p-5 text-white bg-dark border rounded-3">
                             <!-- bg-light -->
                             <h2>Defensa Siciliana</h2>
-                            <p>Goza de un gran prestigio entre los jugadores de cualquier nivel debido a su carácter agresivo, a la flexibilidad de las posiciones que otorga y, de manera significativa, al hecho de haber sido adoptada por varios campeones mundiales.</p>
-                            <img src="assets\img\movimientos.png" class="aperturas2">
+                            <p>Mueve el caballo de la reina a C6 para obligar a tu oponente a atacar.</p>
+                            <p>Mueve el caballo de B8 a C6 de forma que pueda tener acceso al centro del tablero. Desde esta posición, si bien tu oponente podría capturar el caballo, se pondrá en riesgo de que un peón lo capture.</p>
+                            <p>Si deseas, puedes mover el peón de A7 a A6 como una forma de ayudar a defender a tu rey.</p>
+                            <p>También puedes mover el peón de G7 a G6 de forma que puedas sacar el alfil del rey de la última fila. Esto te permitirá enrocar del lado del rey.</p>
+                            <img src="assets\img\siciliana5.png" class="aperturas2">
                         </div>
                     </div>
                 </div>
