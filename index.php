@@ -39,8 +39,7 @@
     $usuarioreg = $_POST['usuarioreg'];
     $passw = $_POST['passw'];
     $dni = $_POST['dni'];
-    $aciertos = 0;
-    $fallos = 0;
+    $puntos = 0;
     $permisos = "CCC";
 
     /* Comprobar usuario BBDD */
@@ -93,15 +92,19 @@
     /* Realizar registro */
     if (isset($_POST["usuarioreg"])) {
 
-        $sql = "INSERT INTO usuarios (nombre, pass, dni, aciertos, fallos, permisos, id) VALUES('" . $usuarioreg . "', '" . $passw . "', '" . $dni . "', '" . $aciertos . "', '" . $fallos . "', '" . $permisos . "', uuid())";
+        try{
+
+        $sql = "INSERT INTO usuarios (nombre, pass, dni, puntos, permisos, id) VALUES('" . $usuarioreg . "', '" . $passw . "', '" . $dni . "', '" . $puntos . "', '" . $permisos . "', uuid())";
 
         if (mysqli_query($_SESSION["con"], $sql) === TRUE) {
             echo '<script type="text/javascript">', 'Swal.fire("Usuario registrado correctamente");', '</script>';
         } else {
             echo "Error: " . $sql . "<br>" . $_SESSION["con"]->error;
         }
+        }catch(mysqli_sql_exception $errorSQL){
+            echo '<script type="text/javascript">', 'Swal.fire("Nombre de usuario o dni registrado");', '</script>';
+        }
         
-        //mysqli_close($_SESSION["con"]);
     }
     ?>
 
