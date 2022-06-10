@@ -2,7 +2,7 @@
 session_start();
 
 $servername = "localhost";
-$database = "bbdd";
+$database = "bbdda";
 $username = "root";
 $password = "";
 
